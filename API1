@@ -1,0 +1,21 @@
+#!/usr/bin/python
+import requests
+import json
+from datetime import datetime
+import dateutil.parser
+url = "https://quickstats.nass.usda.gov/api"
+
+querystring = {"TURKEYS,YOUNG, SLAUGHTER, FI - SLAUGHTERED, MEASURED IN HEAD"}
+
+headers = {
+  'authorization-key': "B0D2F302-4153-3E9F-9D1C-60D1269C43E6"
+   }
+data = {'api_dev_key':url,
+        'api_option':'paste',
+        'Api_paste_code': querystring,
+        'Api_paste_format':'python'}
+
+response = requests.request("GET", url, headers=headers, params=querystring)
+
+
+responses=response.json()
